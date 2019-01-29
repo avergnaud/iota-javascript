@@ -22,7 +22,7 @@ sock.on('message', msg => {
         console.log(`AMOUNT`, data[3])
         console.log(`BUNDLE`, data[8])
         console.log(`TAG`, data[12])
-        const pythonProcess = spawn('python3',["/home/ubuntu/dev4/smart-city/tetris/workspace/src/tetris_snes.py", "adrien"]);
+        const pythonProcess = spawn('python3',["/home/pi/dev/smart-city-tetris/src/tetris_snes.py", "adrien"]);
         pythonProcess.stdout.on('data', (data_python) => {
           console.log(data_python)
         });
