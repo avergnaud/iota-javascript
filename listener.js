@@ -3,7 +3,7 @@ let sock = zmq.socket('sub')
 const Converter = require("@iota/converter");
 const spawn = require("child_process").spawn;
 
-sock.connect('tcp://zmq.devnet.iota.org:5556')
+sock.connect('tcp://tanglebeat.com:5557')
 sock.subscribe('tx')
 sock.subscribe('sn')
 
@@ -11,6 +11,7 @@ const address =
   "GHLEMUXUIYJK9SKXOUMNEKZBRDHZVFUURXOYMQQODSWEGYRROOGGILVYTGTCCLOYDCETCKHUT9LRXJMMD";
 
 sock.on('message', msg => {
+  console.log(msg)
   const data = msg.toString().split(' ') // Split to get topic & data
   switch (
     data[0] // Use index 0 to match topic
@@ -22,7 +23,7 @@ sock.on('message', msg => {
         console.log(`AMOUNT`, data[3])
         console.log(`BUNDLE`, data[8])
         console.log(`TAG`, data[12])
-        const pythonProcess = spawn('python3',["/home/ubuntu/dev4/smart-city/tetris/workspace/src/tetris_snes.py", "adrien"]);
+        const pythonProcess = spawn('python3',["/home/ubuntu/dev4/smart-city/v1/tetris/workspace/src/tetris_snes.py", "adrien"]);
         pythonProcess.stdout.on('data', (data_python) => {
           console.log(data_python)
         });

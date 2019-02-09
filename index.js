@@ -7,7 +7,7 @@ require("dotenv").config();
 // Create a new instance of the IOTA class object.
 // Use 'provider' variable to specify which Full Node to talk to
 const iota = Iota.composeAPI({
-  provider: "https://nodes.devnet.thetangle.org:443"
+  provider: "https://nodes.thetangle.org:443"
 });
 
 // Patch the current IOTA instance
@@ -32,7 +32,7 @@ const tag = "ADRIEN"
 
 const transfers = [
   {
-    value: 2,
+    value: 0,
     address: address,
     message: message,
     tag: tag
@@ -41,7 +41,7 @@ const transfers = [
 
 iota
   .prepareTransfers(seed, transfers)
-  .then(trytes => iota.sendTrytes(trytes, 3, 9))
+  .then(trytes => iota.sendTrytes(trytes, 3, 14))
   .then(bundle => {
     console.log(bundle);
   })
